@@ -1,4 +1,18 @@
+<mat-toolbar>
+    <span>Spectrum</span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>power_settings_new</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>all_inclusive</mat-icon>
+    </button>
+    <button mat-icon-button class="" aria-label="Settings">
+        <mat-icon>settings</mat-icon>
+    </button>
+    <button mat-icon-button class="" aria-label="Spectrum code" (click)="onCodeClick()">        
+        <mat-icon>code</mat-icon>
+    </button>
+</mat-toolbar>
 
-<h1>SpectrumUI</h1>
-<br>
-<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+<button mat-raised-button color="primary" (click)="onDefaultAnimClick()">Play default Anim!</button>
