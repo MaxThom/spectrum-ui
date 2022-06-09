@@ -1,18 +1,21 @@
-<mat-toolbar>
-    <span>Spectrum</span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>power_settings_new</mat-icon>
-    </button>
+<mat-toolbar style="width: 95.5%;margin-right:0px;">
+    <span style="">Spectrum</span>
+    <button mat-icon-button color="" class="" aria-label="Spectrum code" (click)="onCodeClick()">        
+        <mat-icon>code</mat-icon>
+    </button>    
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button mat-icon-button color="primary" class="example-icon" aria-label="Segments">
         <mat-icon>all_inclusive</mat-icon>
     </button>
-    <button mat-icon-button class="" aria-label="Settings">
-        <mat-icon>settings</mat-icon>
-    </button>
-    <button mat-icon-button class="" aria-label="Spectrum code" (click)="onCodeClick()">        
-        <mat-icon>code</mat-icon>
+    <button mat-icon-button color="primary" class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>power_settings_new</mat-icon>
     </button>
 </mat-toolbar>
 
-<button mat-raised-button color="primary" (click)="onDefaultAnimClick()">Play default Anim!</button>
+<div class="centered" *ngIf="!discovered">
+    <mat-spinner diameter="48"></mat-spinner>
+</div>
+<ng-template [ngIf]="discovered">
+    <app-options [options]="discovery.options"></app-options>
+    <app-animations [animations]="discovery.animations" [runningAnim]="runningAnim"></app-animations>    
+</ng-template>

@@ -7,14 +7,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { SpectrumService } from './service/spectrum.service';
-
+import { AnimationsComponent } from './animations/animations.component';
+import { AnimationDetailComponent } from './animation-detail/animation-detail.component';
+import { SegmentsComponent } from './segments/segments.component';
+import { OptionsComponent } from './options/options.component';
+import { AnimationButtonComponent } from './animation-button/animation-button.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AnimationsComponent,
+    AnimationDetailComponent,
+    SegmentsComponent,
+    OptionsComponent,
+    AnimationButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +34,8 @@ import { SpectrumService } from './service/spectrum.service';
     MatSliderModule,
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   providers: [SpectrumService],
   bootstrap: [AppComponent]
