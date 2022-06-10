@@ -4,15 +4,17 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Anim } from '../../model/animation.model';
 import { Discovery } from '../../model/discovery.model';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SpectrumService {
 
-    url: string = "http://monstera:8080/api"
+    url: string = `${environment.spectrumUrl}api`
 
     constructor(private http: HttpClient) { }
 
-    getDiscovery(): Observable<Discovery> {        
+    getDiscovery(): Observable<Discovery> {      
+        console.log(this.url)  
         return this.http.get<Discovery>(`${this.url}/discovery/`)
     }
 
