@@ -1,6 +1,6 @@
 # stage 1
 
-FROM node:latest AS app_build
+FROM node:18 AS app_build
 WORKDIR /app
 COPY . .
 RUN npm install

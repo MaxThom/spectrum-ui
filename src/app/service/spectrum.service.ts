@@ -9,12 +9,11 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class SpectrumService {
 
-    url: string = `${environment.spectrumUrl}api`
+    url: string = `${this.getSpectrumUrl()}api`
 
     constructor(private http: HttpClient) { }
 
-    getDiscovery(): Observable<Discovery> {      
-        console.log(this.url)  
+    getDiscovery(): Observable<Discovery> {
         return this.http.get<Discovery>(`${this.url}/discovery/`)
     }
 
@@ -45,5 +44,16 @@ export class SpectrumService {
         }
         
         return this.http.post<Anim>(`${this.url}/animation`, anim)
+    }
+
+    getSpectrumUrl(): string {
+        let url: string = ""
+        if (environment.spectrumUrl) 
+            url = environment.spectrumUrl;
+        else
+            url = window.location.protocol + "//" + window.location.hostname + ":8080/";
+
+        console.log("Spectrum " + url)
+        return url;
     }
 }
