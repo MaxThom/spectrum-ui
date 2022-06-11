@@ -23,7 +23,7 @@ export class SpectrumService {
     }
 
     setAnimation(anim: Anim): Observable<Anim> {
-        return this.http.post<Anim>(`${this.url}/animation/`, anim)
+        return this.http.post<Anim>(`${this.url}/animation`, anim)
     }
 
     setDefaultAnimation(): Observable<Anim> {
@@ -44,6 +44,6 @@ export class SpectrumService {
 
         }
         
-        return this.http.post<Anim>(`${this.url}/animation/`, anim)
+        return this.http.post<Anim>(`${this.url}/animation`, anim)
     }
 }
