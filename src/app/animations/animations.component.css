@@ -3,13 +3,15 @@
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
-    overflow-x: hidden;
-    overflow-y: auto;
+    justify-content: space-around;
+    align-content: space-around;
+    gap: 10px;
 }
 
 
 .square {
     width: 100px;
     height: 100px;
-    margin: 7.5px 7.5px 7.5px 7.5px;
+    margin: 7px 7px 7px 7px;
+    flex-grow: 1
 }

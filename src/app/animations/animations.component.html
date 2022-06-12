@@ -1,4 +1,6 @@
 
 <div class="row" *ngFor="let anim of animations">
-    <app-animation-button class="square" [animDisco]="anim" [isCurrent]="isAnimRunning(anim.animation)"></app-animation-button>    
+    <div class="square">
+        <app-animation-button [animDisco]="anim" [isCurrent]="isAnimRunning(anim.animation)"></app-animation-button>    
+    </div>
 </div>
