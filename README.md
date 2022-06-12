@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Run
 ```
-ng serve --host=0.0.0.0 --disable-host-checka
+ng serve --host=0.0.0.0 --disable-host-check
 ```
 
 # Docker

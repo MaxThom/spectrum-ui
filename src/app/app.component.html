@@ -16,6 +16,5 @@
     <mat-spinner diameter="48"></mat-spinner>
 </div>
 <ng-template [ngIf]="discovered">
-    <app-options class="container" [options]="discovery.options"></app-options>
-    <app-animations class="container" [animations]="discovery.animations" [runningAnim]="runningAnim"></app-animations>    
+    <router-outlet></router-outlet>
 </ng-template>

@@ -14,13 +14,11 @@ export class AppComponent {
   discovered: boolean = false
   runningAnim: Anim[] = []
 
-  constructor(private spectrumService: SpectrumService) {
-    
-  }
+  constructor(private spectrumService: SpectrumService) { }
 
   ngOnInit() {
     console.log("Discovering animations!")
-    this.spectrumService.getDiscovery().subscribe(
+    this.spectrumService.discovery$.subscribe(
       {
         next: discovery => {
           console.log("There was a discovery!", discovery)
@@ -33,7 +31,7 @@ export class AppComponent {
       }
     )
 
-    this.spectrumService.getAnimation().subscribe(
+    this.spectrumService.runningAnims$.subscribe(
       {
         next: anim => {
           console.log("There are animations running!", anim)

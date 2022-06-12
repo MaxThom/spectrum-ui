@@ -1,24 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable, Subscription, throwError } from 'rxjs';
+import { catchError, retry, shareReplay } from 'rxjs/operators';
 import { Anim } from '../../model/animation.model';
 import { Discovery } from '../../model/discovery.model';
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SpectrumService {
-
     url: string = `${this.getSpectrumUrl()}api`
+    discovery: Discovery = { options: {}, animations: [] }
+    discovery$: Observable<Discovery> = this.getDiscovery().pipe(shareReplay())
+    runningAnims$: Observable<Anim[]> = this.getAnimation().pipe(shareReplay())
+    
+
+
 
     constructor(private http: HttpClient) { }
 
     getDiscovery(): Observable<Discovery> {
-        return this.http.get<Discovery>(`${this.url}/discovery/`)
+        return this.http.get<Discovery>(`${this.url}/discovery`)
     }
 
     getAnimation(): Observable<Anim[]> {        
-        return this.http.get<Anim[]>(`${this.url}/animation/`)
+        return this.http.get<Anim[]>(`${this.url}/animation`)
     }
 
     setAnimation(anim: Anim): Observable<Anim> {
@@ -55,5 +60,9 @@ export class SpectrumService {
 
         console.log("Spectrum " + url)
         return url;
+    }
+
+    isDiscovered(): boolean {
+        return this.discovery.animations.length != 0;
     }
 }
