@@ -16,6 +16,9 @@ import { AnimationDetailComponent } from './animation-detail/animation-detail.co
 import { SegmentsComponent } from './segments/segments.component';
 import { OptionsComponent } from './options/options.component';
 import { AnimationButtonComponent } from './animation-button/animation-button.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -28,14 +31,17 @@ import { AnimationButtonComponent } from './animation-button/animation-button.co
   ],
   imports: [
     BrowserModule,
-    HttpClientModule, // Must be after Browser Module
+    HttpClientModule, // Must be after Browser Module    
     AppRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
     BrowserAnimationsModule,
     MatSliderModule,
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatDialogModule    
   ],
   providers: [SpectrumService],
   bootstrap: [AppComponent]

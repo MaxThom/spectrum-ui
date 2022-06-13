@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Anim } from 'src/model/animation.model';
 import { AnimDiscovery } from 'src/model/discovery.model';
 import { SpectrumService } from '../service/spectrum.service';
@@ -13,9 +14,12 @@ export class AnimationButtonComponent implements OnInit {
   @Input() animDisco: AnimDiscovery = { animation: "", options: {}}
   @Input() isCurrent: string = ""
 
-  constructor(private spectrumService: SpectrumService) { }
+  timeoutHandler: any = null;
 
-  ngOnInit(): void {
+
+  constructor(private spectrumService: SpectrumService, private router: Router) { }
+
+  ngOnInit(): void { 
   }
 
   onAnimClick(): void {
@@ -44,5 +48,21 @@ export class AnimationButtonComponent implements OnInit {
         }
       }
     )
+  }
+
+  onMouseDown(): void {
+    console.log("down");
+    this.timeoutHandler = setTimeout(() => {      
+      console.log("long press");
+      this.router.navigate([`/anims/${this.animDisco.animation}`]);
+    }, 1000);
+  }
+
+  onMouseUp(): void {
+    console.log("up");
+    if (this.timeoutHandler) {
+      clearTimeout(this.timeoutHandler);
+      console.log("canceled");
+    }
   }
 }

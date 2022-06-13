@@ -1,1 +1,47 @@
-<p>segments works!</p>
+<div class="container">
+    <div class="row-container" style="background-color: #e3a7bf;">
+        <strong class="" style="margin-left: 16px;">All</strong>
+        <span class="spacer"></span>
+        <mat-form-field style="width:42px;" appearance="standard">
+            <input matInput type="number" value="0" readonly>
+        </mat-form-field>
+        -
+        <mat-form-field style="width:42px;" appearance="standard">
+            <input matInput type="number" value="144" readonly>
+        </mat-form-field>
+        <span style="width:40px;"></span>
+    </div>
+    <hr style="width: 100%;">
+    <div *ngFor="let anim of segments; index as i">
+        <div class="item" style="">
+            <div class="row-container">
+                <strong style="margin-left: 16px;">{{i+1}}</strong>
+                <span class="spacer"></span>
+                <mat-form-field style="width:42px;" appearance="standard">
+                    <input matInput type="number" [value]="anim.segment.start">
+                </mat-form-field>
+                -
+                <mat-form-field style="width:42px;margin-right:8px;" appearance="standard">
+                    <input matInput type="number" [value]="anim.segment.end">
+                    <span matSuffix>[</span>
+                </mat-form-field>
+                <button mat-mini-fab color="basic" aria-label="Example icon button with a heart icon">
+                    <mat-icon class="pastel-red-font">close</mat-icon>
+                </button>
+                
+            </div>
+        </div>
+        <hr />
+    </div>
+    <div class="row-container-nohover">
+        <span class="spacer"></span>
+        <button mat-mini-fab color="basic" aria-label="">
+            <mat-icon class="pastel-green-font" style="font-size:32px;margin-left:-8px;margin-top:-8px">add</mat-icon>
+        </button>
+    </div>
+</div>
+
+<!--<div mat-dialog-actions style="margin-bottom: -8px;">
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+</div>-->

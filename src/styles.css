@@ -4,3 +4,38 @@ body {
     background-color: #323236;
 }
 
+.nopadding-dialog-container .mat-dialog-container {
+    padding: 8px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.light-brown-font {
+    color: #f0d5ba;
+}
+
+.pastel-red-font {
+    color: #ee6969;
+}
+
+.pastel-red-bg {
+    background-color: #ee6969;
+}
+
+.pastel-green-font {
+    color: #7dbd74;
+}
+
+.pastel-green-bg {
+    background-color: #7dbd74;
+}
+
+.text-shadow {
+    text-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.box-shadow {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}

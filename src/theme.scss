@@ -1,8 +1,116 @@
 @import '~@angular/material/theming';
 @include mat-core();
 /* ======== Angular material custom themes ======== */
-$my-custom-primary: mat-palette($mat-light-blue, 800);
-$my-custom-accent: mat-palette($mat-pink, 100, 500, A100);
-$my-custom-warn: mat-palette($mat-deep-purple);
+
+
+
+// below defines your custom color to build a theme palette from
+$pastelblue: (
+  50: #7fdddd,
+  100: #7faedd,
+  200: #7f7fdd,
+  300: #7d95b9,
+  400: #7d95b9,
+  500: #7d95b9,
+  600: #7d95b9,
+  700: #7d95b9,
+  800: #7d95b9,
+  900: #7d95b9,
+  A100: #7faedd,
+  A200: #7faedd,
+  A400: #7faedd,
+  A700: #7faedd,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$pastelpink: (
+  50: #f8d7e8,
+  100: #f8d7e8,
+  200: #f8d7e8,
+  300: #e3a7bf,
+  400: #e3a7bf,
+  500: #e3a7bf,
+  600: #e3a7bf,
+  700: #e3a7bf,
+  800: #e3a7bf,
+  900: #e3a7bf,
+  A100: #cb8ca5,
+  A200: #cb8ca5,
+  A400: #cb8ca5,
+  A700: #cb8ca5,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$pastelyellow: (
+  50: #f8efe6,
+  100: #f8efe6,
+  200: #f8efe6,
+  300: #f0d5ba,
+  400: #f0d5ba,
+  500: #f0d5ba,
+  600: #f0d5ba,
+  700: #f0d5ba,
+  800: #f0d5ba,
+  900: #f0d5ba,
+  A100: #d0b9a2,
+  A200: #d0b9a2,
+  A400: #d0b9a2,
+  A700: #d0b9a2,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+
+$my-custom-primary: mat-palette($pastelblue, 800, 200, A100);
+$my-custom-accent: mat-palette($pastelpink, 800, 200, A100);
+$my-custom-warn: mat-palette($pastelyellow, 800, 200, A100);
+
+//$my-custom-primary: mat-palette($mat-light-blue, 800);
+//$my-custom-accent: mat-palette($mat-pink, 100, 500, A100);
+//$my-custom-warn: mat-palette($mat-deep-purple);
 $my-custom-theme: mat-dark-theme($my-custom-primary, $my-custom-accent, $my-custom-warn);
 @include angular-material-theme($my-custom-theme);

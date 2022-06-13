@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-animation-detail',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnimationDetailComponent implements OnInit {
 
-  constructor() { }
+  name: string | null = ""
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.name = this.route.snapshot.paramMap.get('name');
+    });
   }
 
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Anim } from 'src/model/animation.model';
 import { Discovery } from 'src/model/discovery.model';
 import { SpectrumService } from './service/spectrum.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { SegmentsComponent } from './segments/segments.component';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,7 @@ export class AppComponent {
   discovered: boolean = false
   runningAnim: Anim[] = []
 
-  constructor(private spectrumService: SpectrumService) { }
+  constructor(public dialog: MatDialog, private spectrumService: SpectrumService) { }
 
   ngOnInit() {
     console.log("Discovering animations!")
@@ -60,6 +62,32 @@ export class AppComponent {
         }
       }
     )
+  }
+
+  openSegmentDialog(event: any) {
+    let width = 250;
+    let offsetTop = event.srcElement.id === "segmentBtn" ? 18 : 0;
+    let el = event.srcElement;
+    while(el){
+        offsetTop += el.offsetTop;
+        el = el.parentElement;
+    }
+
+    const dialogRef = this.dialog.open(SegmentsComponent, {
+      width: `${width}px`,
+      data: this.runningAnim,
+      hasBackdrop: true,
+      backdropClass:'foo',
+      panelClass: 'nopadding-dialog-container',
+      position: {
+        top: `${offsetTop}px`,
+        left: `${window.innerWidth-width-8}px`
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }
 

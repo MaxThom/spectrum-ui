@@ -1,4 +1,5 @@
 import {Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Anim } from 'src/model/animation.model';
 import { AnimDiscovery } from 'src/model/discovery.model';
 import { SpectrumService } from '../service/spectrum.service';

@@ -1,13 +1,14 @@
 <mat-toolbar color="" style="width: 100%;margin-right:0px;">
-    <span style="">Spectrum</span>
-    <button mat-icon-button color="" class="" aria-label="Spectrum code" (click)="onCodeClick()">        
+    <span class="light-brown-font">Spectrum</span>
+    <button mat-icon-button color="warn" aria-label="Spectrum code" (click)="onCodeClick()">        
         <mat-icon>code</mat-icon>
     </button>    
-    <span class="example-spacer"></span>
-    <button mat-icon-button color="primary" class="example-icon" aria-label="Segments">
-        <mat-icon>all_inclusive</mat-icon>
+    <span class="spacer"></span>
+    <button id="segmentBtn" mat-raised-button aria-label="Segments" (click)="openSegmentDialog($event)">
+        <span class="light-brown-font">All</span>
+        <mat-icon class="light-brown-font">arrow_drop_down</mat-icon>
     </button>
-    <button mat-icon-button color="primary" class="example-icon" aria-label="Example icon-button with menu icon">
+    <button mat-icon-button color="warn" class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>power_settings_new</mat-icon>
     </button>
 </mat-toolbar>
