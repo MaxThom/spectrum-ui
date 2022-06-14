@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Anim } from 'src/model/animation.model';
+import { Anim, Segment } from 'src/model/animation.model';
 import { AnimDiscovery } from 'src/model/discovery.model';
 import { SpectrumService } from '../service/spectrum.service';
 
@@ -28,12 +28,14 @@ export class AnimationButtonComponent implements OnInit {
         opt[x[0]] = x[1].default
     })
 
+    let seg: Segment = {start:0, end: parseInt(this.spectrumService.discovery.options["ledCount"])}
+    if (this.spectrumService.targetIndex !== -1) {
+      seg = this.spectrumService.segments[this.spectrumService.targetIndex]
+    }
+
     let anim: Anim = {
-      index: -1,
-      segment: {
-          start: 0,
-          end: 144
-      },
+      index: this.spectrumService.targetIndex,
+      segment: seg,
       animation: this.animDisco.animation,      
       options: opt,
     }

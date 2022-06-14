@@ -1,41 +1,37 @@
 <div class="container">
-    <div class="row-container" style="background-color: #e3a7bf;">
+    <div class="row-container" [ngStyle]="{'background-color': (target===-1) ? '#7faedd' : '#424242'}" (click)="onSegmentClick(-1)">
         <strong class="" style="margin-left: 16px;">All</strong>
         <span class="spacer"></span>
-        <mat-form-field style="width:42px;" appearance="standard">
-            <input matInput type="number" value="0" readonly>
-        </mat-form-field>
+        0
         -
-        <mat-form-field style="width:42px;" appearance="standard">
-            <input matInput type="number" value="144" readonly>
-        </mat-form-field>
-        <span style="width:40px;"></span>
+        144
+        <span style="width:64px;"></span>
     </div>
-    <hr style="width: 100%;">
-    <div *ngFor="let anim of segments; index as i">
-        <div class="item" style="">
-            <div class="row-container">
+    <!--<hr style="width: 100%;">-->
+    <div *ngFor="let seg of segments; index as i">
+        <div class="item">
+            <div class="row-container" (click)="onSegmentClick(i)" [ngStyle]="{'background-color': (target==i) ? '#7faedd' : '#424242'}">
                 <strong style="margin-left: 16px;">{{i+1}}</strong>
                 <span class="spacer"></span>
                 <mat-form-field style="width:42px;" appearance="standard">
-                    <input matInput type="number" [value]="anim.segment.start">
+                    <input matInput type="number" [(ngModel)]="seg.start">
                 </mat-form-field>
                 -
                 <mat-form-field style="width:42px;margin-right:8px;" appearance="standard">
-                    <input matInput type="number" [value]="anim.segment.end">
+                    <input matInput type="number" [(ngModel)]="seg.end">
                     <span matSuffix>[</span>
                 </mat-form-field>
-                <button mat-mini-fab color="basic" aria-label="Example icon button with a heart icon">
+                <button mat-button color="basic" style="margin-left: -16px;" (click)="onSegmentDeleteClick(i)">
                     <mat-icon class="pastel-red-font">close</mat-icon>
                 </button>
                 
             </div>
         </div>
-        <hr />
+        <!--<hr />-->
     </div>
     <div class="row-container-nohover">
         <span class="spacer"></span>
-        <button mat-mini-fab color="basic" aria-label="">
+        <button mat-mini-fab color="basic" aria-label=""style="margin-right:12px;" (click)="onSegmentAddClick()">
             <mat-icon class="pastel-green-font" style="font-size:32px;margin-left:-8px;margin-top:-8px">add</mat-icon>
         </button>
     </div>

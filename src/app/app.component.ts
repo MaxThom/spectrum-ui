@@ -25,6 +25,7 @@ export class AppComponent {
         next: discovery => {
           console.log("There was a discovery!", discovery)
           this.discovery = discovery
+          this.spectrumService.discovery = discovery;
           this.discovered = true
         },
         error: err => {
@@ -38,6 +39,7 @@ export class AppComponent {
         next: anim => {
           console.log("There are animations running!", anim)
           this.runningAnim = anim;
+          this.spectrumService.segments = anim.map(x => x.segment);
         },
         error: err => {
             console.error('There was an error!', err);
@@ -65,7 +67,7 @@ export class AppComponent {
   }
 
   openSegmentDialog(event: any) {
-    let width = 250;
+    let width = 275;
     let offsetTop = event.srcElement.id === "segmentBtn" ? 18 : 0;
     let el = event.srcElement;
     while(el){
@@ -75,10 +77,10 @@ export class AppComponent {
 
     const dialogRef = this.dialog.open(SegmentsComponent, {
       width: `${width}px`,
-      data: this.runningAnim,
+      data: {target: this.spectrumService.targetIndex, segments: this.spectrumService.segments},
       hasBackdrop: true,
       backdropClass:'foo',
-      panelClass: 'nopadding-dialog-container',
+      panelClass: ['nopadding-dialog-container', 'nobackground-dialog-container'],
       position: {
         top: `${offsetTop}px`,
         left: `${window.innerWidth-width-8}px`
@@ -86,7 +88,9 @@ export class AppComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The dialog was closed', result);
+      this.spectrumService.targetIndex = result.target;
+      this.spectrumService.segments = result.segments;
     });
   }
 }

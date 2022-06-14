@@ -19,6 +19,7 @@ import { AnimationButtonComponent } from './animation-button/animation-button.co
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatToolbarModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatDialogModule    
+    MatDialogModule    ,
+    FormsModule
   ],
   providers: [SpectrumService],
   bootstrap: [AppComponent]

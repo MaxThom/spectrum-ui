@@ -16,6 +16,7 @@
     border-radius:25px;
     height: 48px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    margin-bottom: 8px;
 }
 
 .row-container-nohover {
@@ -30,7 +31,7 @@
 }
 
 .row-container:hover {
-    background-color: #7d95b9;
+    background-color: #7faedd;
     cursor: pointer;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
@@ -38,6 +39,7 @@
 .row-container:active {
     background-color: #7faedd;
     cursor: pointer;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.26);
 }
 
 hr {

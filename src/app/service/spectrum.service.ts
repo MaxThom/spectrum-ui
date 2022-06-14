@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription, throwError } from 'rxjs';
 import { catchError, retry, shareReplay } from 'rxjs/operators';
-import { Anim } from '../../model/animation.model';
+import { Anim, Segment } from '../../model/animation.model';
 import { Discovery } from '../../model/discovery.model';
 import { environment } from '../../environments/environment';
 
@@ -10,11 +10,10 @@ import { environment } from '../../environments/environment';
 export class SpectrumService {
     url: string = `${this.getSpectrumUrl()}api`
     discovery: Discovery = { options: {}, animations: [] }
+    targetIndex: number = -1;
+    segments: Segment[] = [];
     discovery$: Observable<Discovery> = this.getDiscovery().pipe(shareReplay())
     runningAnims$: Observable<Anim[]> = this.getAnimation().pipe(shareReplay())
-    
-
-
 
     constructor(private http: HttpClient) { }
 
