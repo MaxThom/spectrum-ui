@@ -54,6 +54,16 @@ body {
     border: none;
 }
 
+.yellow-snackbar {
+    background: rgb(33,33,33) !important;
+    color: #f0d5ba !important;
+}
+.yellow-snackbar button {
+    background-color: rgb(65, 252, 134);
+    color: white;
+    border: none;
+}
+
 .green-snackbar {
     background: rgb(33,33,33) !important;
     color: #7dbd74 !important;

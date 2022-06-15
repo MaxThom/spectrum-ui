@@ -45,6 +45,12 @@ export class AnimationButtonComponent implements OnInit {
       {
         next: anim => {
           console.log("There was an anim!", anim)
+          if (anim.message) {
+            this._snackBar.open(anim.message, ``, {
+              panelClass: ['yellow-snackbar'],
+              duration: 3000
+            });
+          }          
         },
         error: err => {
             console.error('There was an error!', err);

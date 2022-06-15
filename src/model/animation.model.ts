@@ -4,6 +4,7 @@ export interface Anim {
     segment: Segment
     animation: string
     options: Record<string, string>
+    message?: string
 }
 
 export interface Segment {

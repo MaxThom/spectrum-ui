@@ -16,6 +16,7 @@ export class AppComponent {
   discovery: Discovery = { options: {}, animations: [] }
   discovered: boolean = false
   runningAnim: Anim[] = []
+  isSegmentDialogOpen: boolean = false
 
   constructor(public dialog: MatDialog, 
     private spectrumService: SpectrumService,
@@ -94,6 +95,7 @@ export class AppComponent {
         el = el.parentElement;
     }
 
+    this.isSegmentDialogOpen = true
     const dialogRef = this.dialog.open(SegmentsComponent, {
       width: `${width}px`,
       data: {target: this.spectrumService.targetIndex, segments: this.spectrumService.segments},
@@ -110,14 +112,21 @@ export class AppComponent {
       console.log('The dialog was closed', result);
       this.spectrumService.targetIndex = result.target;
       this.spectrumService.segments = result.segments;
+      this.isSegmentDialogOpen = false
     });
   }
 
   getSegmentString(): string {
+    let msg = ""
     if (this.spectrumService.targetIndex === -1) {
-      return "All"
-    }
-    return this.spectrumService.segments[this.spectrumService.targetIndex].start.toString() + "-" + this.spectrumService.segments[this.spectrumService.targetIndex].end.toString()
+      msg = "All"
+    } else if (this.spectrumService.segments[this.spectrumService.targetIndex]
+      && this.spectrumService.segments[this.spectrumService.targetIndex].start
+      && this.spectrumService.segments[this.spectrumService.targetIndex].end) {
+      msg = this.spectrumService.segments[this.spectrumService.targetIndex].start.toString() + "-" + this.spectrumService.segments[this.spectrumService.targetIndex].end.toString()
+    }     
+
+    return msg
   }
 }
 

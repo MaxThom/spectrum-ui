@@ -74,10 +74,6 @@ export class SegmentsComponent implements OnInit {
     {
       next: msg => {
         console.log(msg)
-        this._snackBar.open(`Moew (oo).,., !`, ``, {
-          panelClass: ['green-snackbar'],
-          duration: 3000
-        });
       },
       error: err => {
         console.log(err)
