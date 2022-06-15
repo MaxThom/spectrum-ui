@@ -40,7 +40,6 @@ export class SegmentsComponent implements OnInit {
   }
 
   onSegmentClick(i: number): void {
-    console.log(this.segments[i])
     if (i !== undefined) {
       this.target = i
     } else {
@@ -50,26 +49,24 @@ export class SegmentsComponent implements OnInit {
   }
 
   onDeleteAllSegmentsClick() {
+    this.segments = []
+    this.target = -1
     this.spectrumService.deleteAnimation(-1).subscribe(
       {
         next: msg => {
-          console.log(msg)
-          this._snackBar.open(`Moew (oo).,., !`, ``, {
-            panelClass: ['green-snackbar']
-          });
+          console.log(msg)          
         },
         error: err => {
           console.log(err)
           this._snackBar.open(`Moew (oo).,., !`, ``, {
-            panelClass: ['red-snackbar']
+            panelClass: ['red-snackbar'],
+            duration: 3000
           });
         }  
       })
   }
 
   onSegmentDeleteClick(i: number): void {
-    console.log("Delete " + this.segments[i])
-    
     this.segments.splice(i, 1)
     this.target = this.segments.length-1
 
@@ -78,21 +75,28 @@ export class SegmentsComponent implements OnInit {
       next: msg => {
         console.log(msg)
         this._snackBar.open(`Moew (oo).,., !`, ``, {
-          panelClass: ['green-snackbar']
+          panelClass: ['green-snackbar'],
+          duration: 3000
         });
       },
       error: err => {
         console.log(err)
         this._snackBar.open(`Moew (oo).,., !`, ``, {
-          panelClass: ['red-snackbar']
+          panelClass: ['red-snackbar'],
+          duration: 3000
         });
       }  
     })      
   }
 
   onSegmentAddClick(): void {
-    console.log("Add")
-    this.segments.push({start: 0, end: 144})
+    let start = 0
+    let end = parseInt(this.spectrumService.discovery.options["ledCount"]) / 2    
+    if (this.segments.length > 0) {
+      start = this.segments[this.segments.length-1].end
+      end = this.segments[this.segments.length-1].end - this.segments[this.segments.length-1].start + start      
+    }
+    this.segments.push({start: start, end: end})
     this.target = this.segments.length-1
   }
 

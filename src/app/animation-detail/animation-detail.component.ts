@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,7 +11,7 @@ export class AnimationDetailComponent implements OnInit {
 
   name: string | null = ""
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Anim, Segment } from 'src/model/animation.model';
 import { AnimDiscovery } from 'src/model/discovery.model';
@@ -17,7 +18,7 @@ export class AnimationButtonComponent implements OnInit {
   timeoutHandler: any = null;
 
 
-  constructor(private spectrumService: SpectrumService, private router: Router) { }
+  constructor(private spectrumService: SpectrumService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void { 
   }
@@ -47,6 +48,10 @@ export class AnimationButtonComponent implements OnInit {
         },
         error: err => {
             console.error('There was an error!', err);
+            this._snackBar.open(`Moew (oo).,., !`, ``, {
+              panelClass: ['red-snackbar'],
+              duration: 3000
+            });
         }
       }
     )

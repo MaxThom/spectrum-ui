@@ -4,6 +4,7 @@ import { Discovery } from 'src/model/discovery.model';
 import { SpectrumService } from './service/spectrum.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { SegmentsComponent } from './segments/segments.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,9 @@ export class AppComponent {
   discovered: boolean = false
   runningAnim: Anim[] = []
 
-  constructor(public dialog: MatDialog, private spectrumService: SpectrumService) { }
+  constructor(public dialog: MatDialog, 
+    private spectrumService: SpectrumService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     console.log("Discovering animations!")
@@ -27,9 +30,17 @@ export class AppComponent {
           this.discovery = discovery
           this.spectrumService.discovery = discovery;
           this.discovered = true
+          this._snackBar.open(`Moew (oo).,., !`, ``, {
+            panelClass: ['green-snackbar'],
+            duration: 3000
+          });
         },
         error: err => {
             console.error('There was an error!', err);
+            this._snackBar.open(`Moew (oo).,., !`, ``, {
+              panelClass: ['red-snackbar'],
+              duration: 3000
+            });
         }
       }
     )
@@ -43,6 +54,10 @@ export class AppComponent {
         },
         error: err => {
             console.error('There was an error!', err);
+            this._snackBar.open(`Moew (oo).,., !`, ``, {
+              panelClass: ['red-snackbar'],
+              duration: 3000
+            });
         }
       }
     )
@@ -61,6 +76,10 @@ export class AppComponent {
         },
         error: err => {
             console.error('There was an error!', err);
+            this._snackBar.open(`Moew (oo).,., !`, ``, {
+              panelClass: ['red-snackbar'],
+              duration: 3000
+            });
         }
       }
     )
