@@ -121,8 +121,8 @@ export class AppComponent {
     if (this.spectrumService.targetIndex === -1) {
       msg = "All"
     } else if (this.spectrumService.segments[this.spectrumService.targetIndex]
-      && this.spectrumService.segments[this.spectrumService.targetIndex].start
-      && this.spectrumService.segments[this.spectrumService.targetIndex].end) {
+      && this.spectrumService.segments[this.spectrumService.targetIndex].start != undefined
+      && this.spectrumService.segments[this.spectrumService.targetIndex].end != undefined) {
       msg = this.spectrumService.segments[this.spectrumService.targetIndex].start.toString() + "-" + this.spectrumService.segments[this.spectrumService.targetIndex].end.toString()
     }     
 
