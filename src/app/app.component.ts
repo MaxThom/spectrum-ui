@@ -93,5 +93,12 @@ export class AppComponent {
       this.spectrumService.segments = result.segments;
     });
   }
+
+  getSegmentString(): string {
+    if (this.spectrumService.targetIndex === -1) {
+      return "All"
+    }
+    return this.spectrumService.segments[this.spectrumService.targetIndex].start.toString() + "-" + this.spectrumService.segments[this.spectrumService.targetIndex].end.toString()
+  }
 }
 

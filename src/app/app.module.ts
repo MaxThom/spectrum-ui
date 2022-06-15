@@ -20,6 +20,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -42,8 +44,9 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatDialogModule    ,
-    FormsModule
+    MatDialogModule,
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [SpectrumService],
   bootstrap: [AppComponent]

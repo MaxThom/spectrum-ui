@@ -2,6 +2,8 @@ import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY_PROVIDER_FACTORY } from '@angular
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Anim, Segment } from 'src/model/animation.model';
+import { SpectrumService } from '../service/spectrum.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface SegmentDialogData {
   target: number
@@ -19,7 +21,8 @@ export class SegmentsComponent implements OnInit {
   target: number = -1;
 
   constructor(public dialogRef: MatDialogRef<SegmentsComponent, SegmentDialogData>,
-    @Inject(MAT_DIALOG_DATA) public data: SegmentDialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: SegmentDialogData, private spectrumService: SpectrumService,
+    private _snackBar: MatSnackBar) {
       this.segments = data.segments;
       this.target = data.target;
       console.log(this.segments)
@@ -46,10 +49,45 @@ export class SegmentsComponent implements OnInit {
 
   }
 
+  onDeleteAllSegmentsClick() {
+    this.spectrumService.deleteAnimation(-1).subscribe(
+      {
+        next: msg => {
+          console.log(msg)
+          this._snackBar.open(`Moew (oo).,., !`, ``, {
+            panelClass: ['green-snackbar']
+          });
+        },
+        error: err => {
+          console.log(err)
+          this._snackBar.open(`Moew (oo).,., !`, ``, {
+            panelClass: ['red-snackbar']
+          });
+        }  
+      })
+  }
+
   onSegmentDeleteClick(i: number): void {
     console.log("Delete " + this.segments[i])
+    
     this.segments.splice(i, 1)
     this.target = this.segments.length-1
+
+    this.spectrumService.deleteAnimation(i).subscribe(
+    {
+      next: msg => {
+        console.log(msg)
+        this._snackBar.open(`Moew (oo).,., !`, ``, {
+          panelClass: ['green-snackbar']
+        });
+      },
+      error: err => {
+        console.log(err)
+        this._snackBar.open(`Moew (oo).,., !`, ``, {
+          panelClass: ['red-snackbar']
+        });
+      }  
+    })      
   }
 
   onSegmentAddClick(): void {

@@ -29,6 +29,14 @@ export class SpectrumService {
         return this.http.post<Anim>(`${this.url}/animation`, anim)
     }
 
+    deleteAnimation(index: number): Observable<ArrayBuffer> {
+        let req: AnimDelete = {
+            index: index,
+            shouldClear: true
+        }
+        return this.http.delete<ArrayBuffer>(`${this.url}/animation`, { body: req})
+    }
+
     setDefaultAnimation(): Observable<Anim> {
         let anim: Anim = {
             index: -1,
@@ -64,4 +72,9 @@ export class SpectrumService {
     isDiscovered(): boolean {
         return this.discovery.animations.length != 0;
     }
+}
+
+export interface AnimDelete {
+    index: number
+    shouldClear: boolean
 }

@@ -43,3 +43,23 @@ body {
 .box-shadow {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
+
+.red-snackbar {
+    background: rgb(33,33,33) !important;
+    color: #ee6969 !important;
+}
+.red-snackbar button {
+    background-color: rgb(65, 252, 134);
+    color: white;
+    border: none;
+}
+
+.green-snackbar {
+    background: rgb(33,33,33) !important;
+    color: #7dbd74 !important;
+}
+.green-snackbar button {
+    background-color: rgb(65, 252, 134);
+    color: white;
+    border: none;
+}
