@@ -5,6 +5,7 @@ import { SpectrumService } from './service/spectrum.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { SegmentsComponent } from './segments/segments.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent {
 
   constructor(public dialog: MatDialog, 
     private spectrumService: SpectrumService,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar,
+    private router: Router) { }
 
   ngOnInit() {
     console.log("Discovering animations!")
@@ -127,6 +129,40 @@ export class AppComponent {
     }     
 
     return msg
+  }
+
+  onPowerClick(): void {
+    let anim: Anim = {
+      index: -1,
+      segment: { start: 0, end: parseInt(this.spectrumService.discovery.options["ledCount"])},
+      animation: "Clear",      
+      options: {},
+    }
+
+    this.spectrumService.setAnimation(anim).subscribe(
+      {
+        next: anim => {
+          console.log("There was an anim!", anim)
+          if (anim.message) {
+            this._snackBar.open(anim.message, ``, {
+              panelClass: ['yellow-snackbar'],
+              duration: 3000
+            });
+          }          
+        },
+        error: err => {
+            console.error('There was an error!', err);
+            this._snackBar.open(`Moew (oo).,., !`, ``, {
+              panelClass: ['red-snackbar'],
+              duration: 3000
+            });
+        }
+      }
+    )
+  }
+
+  onLogoClick(): void {
+    this.router.navigate([`/`]);
   }
 }
 

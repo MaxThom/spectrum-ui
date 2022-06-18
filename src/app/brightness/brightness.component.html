@@ -1,0 +1,20 @@
+<div style="width: 100%;margin-top:8px;">
+    <!--<span class="light-brown-font" style="margin-left: 8px;">Brightness</span>-->
+    <div class="container" style="margin-top: -8px;">
+        <mat-slider
+        class="item"
+        thumbLabel
+        [(ngModel)]="brightness"
+        [displayWith]="formatLabel"
+        (change)="onValueChanged($event)"
+        (input)="onSliderMoved($event)"
+        tickInterval=""
+        step="1"
+        min="0"
+        max="255"
+        aria-label="units"></mat-slider>
+        <button mat-icon-button color="warn" style="margin-top: 3px;" (click)="onSettingsClick()">
+            <mat-icon>settings</mat-icon>
+        </button>
+    </div>
+</div>

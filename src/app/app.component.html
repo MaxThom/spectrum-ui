@@ -1,5 +1,5 @@
 <mat-toolbar color="" style="width: 100%;margin-right:0px;">
-    <span class="light-brown-font">Spectrum</span>
+    <span class="light-brown-font" (click)="onLogoClick()">Spectrum</span>
     <button mat-icon-button color="warn" aria-label="Spectrum code" (click)="onCodeClick()">        
         <mat-icon>code</mat-icon>
     </button>    
@@ -8,7 +8,7 @@
         <span class="light-brown-font">{{ getSegmentString() }}</span>
         <mat-icon class="light-brown-font">arrow_drop_down</mat-icon>
     </button>
-    <button mat-icon-button color="warn" class="example-icon" aria-label="Example icon-button with menu icon">
+    <button mat-icon-button color="warn" class="" (click)="onPowerClick()">
         <mat-icon>power_settings_new</mat-icon>
     </button>
 </mat-toolbar>

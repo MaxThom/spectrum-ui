@@ -37,6 +37,14 @@ export class SpectrumService {
         return this.http.delete<ArrayBuffer>(`${this.url}/animation`, { body: req})
     }
 
+    getBrightness(): Observable<Brightness> {
+        return this.http.get<Brightness>(`${this.url}/brightness`)
+    }
+
+    setBrightness(brightness: number): Observable<Brightness> {
+        return this.http.post<Brightness>(`${this.url}/brightness`, { brightness: brightness})
+    }
+
     setDefaultAnimation(): Observable<Anim> {
         let anim: Anim = {
             index: -1,
@@ -77,4 +85,8 @@ export class SpectrumService {
 export interface AnimDelete {
     index: number
     shouldClear: boolean
+}
+
+export interface Brightness {
+    brightness: number
 }

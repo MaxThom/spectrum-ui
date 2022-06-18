@@ -20,8 +20,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrightnessComponent } from './brightness/brightness.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AnimationDetailComponent,
     SegmentsComponent,
     OptionsComponent,
-    AnimationButtonComponent
+    AnimationButtonComponent,
+    BrightnessComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +47,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatProgressSpinnerModule,
     MatDialogModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSliderModule
   ],
   providers: [SpectrumService],
   bootstrap: [AppComponent]

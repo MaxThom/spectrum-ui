@@ -13,3 +13,10 @@
     margin: 7px 7px 7px 7px;
     flex-grow: 1
 }
+
+.container {
+    display: flex;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}

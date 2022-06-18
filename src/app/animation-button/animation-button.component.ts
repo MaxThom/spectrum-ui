@@ -19,7 +19,7 @@ export class AnimationButtonComponent implements OnInit {
 
 
   constructor(private spectrumService: SpectrumService, private router: Router, private _snackBar: MatSnackBar) { }
-
+  
   ngOnInit(): void { 
   }
 
