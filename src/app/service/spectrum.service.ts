@@ -89,4 +89,5 @@ export interface AnimDelete {
 
 export interface Brightness {
     brightness: number
+    message?: string
 }

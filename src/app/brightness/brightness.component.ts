@@ -33,7 +33,13 @@ export class BrightnessComponent implements OnInit {
       this.spectrumService.setBrightness(value.value).subscribe(
         {
           next: brightness => {
-            console.log("There was a brightness!", brightness)        
+            console.log("There was a brightness!", brightness)
+            if (brightness.message) {
+              this._snackBar.open(brightness.message, ``, {
+                panelClass: ['yellow-snackbar'],
+                duration: 3000
+              });
+            }
           },
           error: err => {
               console.error('There was an error!', err);
@@ -52,6 +58,12 @@ export class BrightnessComponent implements OnInit {
         {
           next: brightness => {
             console.log("There was a brightness!", brightness)        
+            if (brightness.message) {
+              this._snackBar.open(brightness.message, ``, {
+                panelClass: ['yellow-snackbar'],
+                duration: 3000
+              });
+            }
           },
           error: err => {
               console.error('There was an error!', err);
