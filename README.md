@@ -10,7 +10,7 @@ ng serve --host=0.0.0.0 --disable-host-check
 # Docker
 ```
 docker buildx create --use
-docker buildx build --push --platform linux/arm/v6,linux/arm/v7,linux/arm64,linux/amd64 -t maxthom/spectrum-ui:latest .
+docker buildx build --push --platform linux/arm/v6,linux/arm/v7 -t maxthom/spectrum-ui:latest .
 docker build -t maxthom/spectrum-ui:latest .
 docker run -p 80:80 maxthom/spectrum-ui:latest
 docker push maxthom/spectrum-ui:latest

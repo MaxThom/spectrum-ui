@@ -11,6 +11,7 @@ export class SpectrumService {
     url: string = `${this.getSpectrumUrl()}api`
     discovery: Discovery = { options: {}, animations: [] }
     targetIndex: number = -1;
+    runningAnim: Anim[] = [];
     segments: Segment[] = [];
     discovery$: Observable<Discovery> = this.getDiscovery().pipe(shareReplay())
     runningAnims$: Observable<Anim[]> = this.getAnimation().pipe(shareReplay())

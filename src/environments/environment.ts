@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  spectrumUrl: "http://10.0.0.3:8080/"
+  spectrumUrl: "http://monstera.local:8080/"
 };
 
 /*

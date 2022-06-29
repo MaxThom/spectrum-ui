@@ -16,7 +16,6 @@ export class AppComponent {
   title = 'spectrum-ui';
   discovery: Discovery = { options: {}, animations: [] }
   discovered: boolean = false
-  runningAnim: Anim[] = []
   isSegmentDialogOpen: boolean = false
 
   constructor(public dialog: MatDialog, 
@@ -52,7 +51,7 @@ export class AppComponent {
       {
         next: anim => {
           console.log("There are animations running!", anim)
-          this.runningAnim = anim;
+          this.spectrumService.runningAnim = anim;
           this.spectrumService.segments = anim.map(x => x.segment);
         },
         error: err => {

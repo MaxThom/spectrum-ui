@@ -1,1 +1,36 @@
-<p>animation-detail works! {{ name }}</p>
+<div *ngIf="discoAnim !== undefined">
+    <div class="row">
+        <div class="play">
+            <app-animation-button [animDisco]="discoAnim!" [isCurrent]="isAnimRunning(name!)"></app-animation-button>
+        </div>
+        <button class="reset" style="color:#f0d5ba;" mat-raised-button (click)="onValuesResetClick()">
+            Reset values
+        </button>
+    </div>
+    
+    <p class="light-brown-font"><strong>Parameters</strong></p>
+    <div class="row" *ngFor="let opt of getAnimOptions()" [ngSwitch]="opt[1].type">
+        <div class="light-brown-font" style="margin-bottom: -8px;">{{ getParamTitle(opt[0]) }}</div>
+        <div class="items">
+            <div *ngSwitchCase="'Color'">
+            </div>
+            <div *ngSwitchCase="'TimeMs'">
+                <app-int [(value)]="opt[1].default"></app-int>
+            </div>
+            <div *ngSwitchCase="'TimeSec'">
+                <app-int [(value)]="opt[1].default"></app-int>
+            </div>
+            <div *ngSwitchCase="'Int'">
+                <app-int [(value)]="opt[1].default"></app-int>
+            </div>
+            <div *ngSwitchCase="'Bool'">
+                
+            </div>
+            {{ opt[0] }}
+        {{ opt[1].type }}
+        {{ opt[1].default }}
+        </div>
+        
+        
+    </div>
+</div>

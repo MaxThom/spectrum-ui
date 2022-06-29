@@ -22,6 +22,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrightnessComponent } from './brightness/brightness.component';
+import { ColorComponent } from './param-type/color/color.component';
+import { IntComponent } from './param-type/int/int.component';
+import { BoolComponent } from './param-type/bool/bool.component';
+import { TimemsComponent } from './param-type/timems/timems.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { BrightnessComponent } from './brightness/brightness.component';
     SegmentsComponent,
     OptionsComponent,
     AnimationButtonComponent,
-    BrightnessComponent
+    BrightnessComponent,
+    ColorComponent,
+    IntComponent,
+    BoolComponent,
+    TimemsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,16 +47,15 @@ import { BrightnessComponent } from './brightness/brightness.component';
     AppRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule,
     MatSliderModule,
+    BrowserAnimationsModule,
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
     MatProgressSpinnerModule,
     MatDialogModule,
     FormsModule,
-    MatSnackBarModule,
-    MatSliderModule
+    MatSnackBarModule
   ],
   providers: [SpectrumService],
   bootstrap: [AppComponent]

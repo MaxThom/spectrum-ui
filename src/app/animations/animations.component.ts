@@ -64,4 +64,6 @@ export class AnimationsComponent implements OnInit {
     return ""
   }
 
+ 
+
 }

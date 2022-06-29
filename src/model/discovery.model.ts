@@ -12,4 +12,6 @@ export interface AnimDiscovery {
 export interface AnimOptions {
     type: string
     default: string
+    min?: string
+    max?: string
 }
